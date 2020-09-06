@@ -1,0 +1,44 @@
+create database school;
+//تستخدم لانشاء داتا بيز باسم معين
+
+use school;
+يتم استخدامها لاستدعاءالداتا بيز
+
+create table class (ID int primary key,Name varchar (200),No_of_student int);
+يتم انشاء الجدول واعطاءه اسم بعد ذلك يتم فتح قوسين وادخال اسماء الاعمدة ونوع كل عامود 
+مثل
+للارقام int
+للاسماء varcher ويتم تحديد حجم العمود
+
+
+drop table class;
+للتخلص من الجدول  من خلال هذا الامر
+
+create table students (ID int primary key,Name varchar (200),Age int,Grades int,class_ID int,
+foreign key (class_ID)references class (ID));
+يتم انشاء جدول مثل السابق ولكن هنا تم اضافة 
+foreign key (اسم الجدول المراد اعتماده بمعنى اخر الابن)
+refereces (اسم الجدول المراد ان يكون مرجع للابن  بمعنى اخر الاب)
+استخدمنا هذا الامر ليتم ربط الجدولين 
+select * from class;
+يتم استخدام هذا الامر لتحديد اسماء الاعمدة من جدول محدد
+select * from students;
+insert into class values (1,'java',20);
+يتم استخدام هذا الامر لادخال القيم على الجدول ولكن بترتيب محدد نفس ترتيب الاعمدة 
+insert into class values (2,'python',15);
+insert into class values (3,'c++',10);
+insert into students values (1,'Saeed',31,100,1);
+insert into students values (2,'Kooz',25,95,1);
+insert into students values (3,'Maen',28,85,1);
+insert into students values (4,'Omar',27,90,2);
+insert into students values (5,'Musa',23,95,2);
+insert into students values (6,'Odai',29,80,2);
+insert into students values (7,'Mohammad',21,88,3);
+insert into students values (8,'Rami',35,100,3);
+insert into students values (9,'Zaid',22,83,3);
+insert into students values (10,'Amer',19,75,3);
+insert into students values (11,'Jaber',33,98,3);
+select * from students where class_ID = 1;
+يتم استخدام هذا الامر لتحديد اسماء الاعمدة من جدول محدد وعمل شرط لاظهار جزء معين
+select * from class,students where class.ID = class_ID and class.Name='java';
+select class.Name,students.Name,students.Age,students.Grades from class,students where class.ID = class_ID;
