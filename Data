@@ -1,0 +1,174 @@
+[٦/‏٩ ٣:٢١ ص] Eng.Maen Nsour: package school_db;
+
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class Connectivity {
+
+    private static Connection connection;
+
+    private static final String DATABASE_NAME = "school_db";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "1111";
+    private static String url = "";
+    private static ResultSet rs;
+    private static Statement st;
+    private static PreparedStatement ps;
+
+    Connectivity() {
+    }
+
+    public static Connection getConnection() {
+        if (connection == null) {
+            connect();
+        }
+        return connection;
+    }
+    
+    public static void setURL() {
+        url = "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
+    }
+
+    private static void connect() {
+        try {
+            setURL();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void close() {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public ArrayList filldata() {
+        ArrayList<school> data = new ArrayList<>();
+        try {
+            connect();
+            String sql = "SELECT * FROM Class,students where class.ID = class_ID";
+           st = connection.createStatement();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                school s = new school();
+                s.setAge(rs.getInt("age"));
+                s.setClass_ID(rs.getInt("class.ID"));
+                s.setClass_ID2(rs.getInt("students.class_ID"));
+                s.setClass_Name(rs.getString("class.Name"));
+                s.setGrades(rs.getInt("grades"));
+                s.setNo_Of_Student(rs.getInt("No_of_student"));
+                s.setStud_ID(rs.getInt("students.ID"));
+                s.setStud_Name(rs.getString("students.Name"));
+                data.add(s);
+                for (Object i : data) {
+                    System.out.print(i+"\t");
+                }
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+}
+[٦/‏٩ ٣:٢٢ ص] Eng.Maen Nsour: package school_db;
+
+public class School_DB {
+
+    public static void main(String[] args) {
+        Connectivity db = new Connectivity();
+        db.filldata();
+    }
+    
+}
+[٦/‏٩ ٣:٢٢ ص] Eng.Maen Nsour: package school_db;
+
+public class school {
+    private int class_ID;
+    private String class_Name;
+    private int No_Of_Student;
+    private int stud_ID;
+    private String stud_Name;
+    private int class_ID2;
+    private int age;
+    private int grades;
+
+    public int getClass_ID() {
+        return class_ID;
+    }
+
+    public void setClass_ID(int class_ID) {
+        this.class_ID = class_ID;
+    }
+
+    public String getClass_Name() {
+        return class_Name;
+    }
+
+    public void setClass_Name(String class_Name) {
+        this.class_Name = class_Name;
+    }
+
+    public int getNo_Of_Student() {
+        return No_Of_Student;
+    }
+
+    public void setNo_Of_Student(int No_Of_Student) {
+        this.No_Of_Student = No_Of_Student;
+    }
+
+    public int getStud_ID() {
+        return stud_ID;
+    }
+
+    public void setStud_ID(int stud_ID) {
+        this.stud_ID = stud_ID;
+    }
+
+    public String getStud_Name() {
+        return stud_Name;
+    }
+
+    public void setStud_Name(String stud_Name) {
+        this.stud_Name = stud_Name;
+    }
+
+    public int getClass_ID2() {
+        return class_ID2;
+    }
+
+    public void setClass_ID2(int class_ID2) {
+        this.class_ID2 = class_ID2;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getGrades() {
+        return grades;
+    }
+
+    public void setGrades(int grades) {
+        this.grades = grades;
+    }
+    
+    
+}
