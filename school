@@ -1,0 +1,90 @@
+package com.company;
+
+public class school {
+    private int classId;
+    private String className;
+    private int noOfStudent;
+    private int studID;
+    private String studName;
+    private int classID2;
+    private int age;
+    private int grades;
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getNoOfStudent() {
+        return noOfStudent;
+    }
+
+    public void setNoOfStudent(int noOfStudent) {
+        this.noOfStudent = noOfStudent;
+    }
+
+    public int getStudID() {
+        return studID;
+    }
+
+    public void setStudID(int studID) {
+        this.studID = studID;
+    }
+
+    public String getStudName() {
+        return studName;
+    }
+
+    public void setStudName(String studName) {
+        this.studName = studName;
+    }
+
+    public int getClassID2() {
+        return classID2;
+    }
+
+    public void setClassID2(int classID2) {
+        this.classID2 = classID2;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getGrades() {
+        return grades;
+    }
+
+    public void setGrades(int grades) {
+        this.grades = grades;
+    }
+
+    @Override
+    public String toString() {
+        return "school{" +
+                "classId=" + classId +
+                ", class_Name='" + className + '\'' +
+                ", No_Of_Student=" + noOfStudent +
+                ", stud_ID=" + studID +
+                ", stud_Name='" + studName + '\'' +
+                ", class_ID2=" + classID2 +
+                ", age=" + age +
+                ", grades=" + grades +
+                '}';
+    }
+}
