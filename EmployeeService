@@ -1,0 +1,102 @@
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class EmployeeService {
+
+    public List<Employee> mapInfoFromDb(){
+        List<Employee> employees = new ArrayList<>();
+        try {
+            Statement stmt=DbProcess.connectToDb();
+            ResultSet rs= null;
+            rs = stmt.executeQuery("select * from \"Employees\"");
+
+            Employee employee;
+            while(rs.next()) {
+                employee = new Employee();
+                employee.setId(rs.getLong("ID"));
+                employee.setFirstName(rs.getString("First Name"));
+                employee.setLastName(rs.getString("Last Name"));
+                employee.setSalary(rs.getDouble("Salary"));
+                employee.setAge(rs.getInt("Age"));
+                employee.setAddress("Address");
+                employees.add(employee);
+            }
+            return employees;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+    public Employee getMaxSalary(List<Employee> list) {
+        Employee maxEmployee = Collections.max(list);
+        return maxEmployee;
+    }
+
+    public Employee getMinSalary(List<Employee> list) {
+        Employee minEmployee = Collections.min(list);
+        return minEmployee;
+    }
+
+    public List<Employee> getEmployeeSalaryGreaterThan(Double salary, List<Employee> employees){
+        List<Employee> employeeResult = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            if (employee.getSalary() > salary)
+                employeeResult.add(employee);
+        }
+        return employeeResult;
+    }
+
+    public List<Employee> getEmployeeSalaryLessThan(Double salary, List<Employee> employees){
+        List<Employee> employeeResult = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            if (employee.getSalary() < salary)
+                employeeResult.add(employee);
+        }
+        return employeeResult;
+    }
+
+    public List<Employee> getEmployeeAgeGreaterThan(Integer age, List<Employee> employees){
+        List<Employee> employeeResult = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            if (employee.getAge() > age)
+                employeeResult.add(employee);
+        }
+        return employeeResult;
+    }
+
+    public List<Employee> getEmployeeAgeLessThan(Integer age, List<Employee> employees){
+        List<Employee> employeeResult = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            if (employee.getAge() < age)
+                employeeResult.add(employee);
+        }
+        return employeeResult;
+    }
+
+    public void deleteEmployeeByFirstNameAndLastName(List<Employee> employees, String firstName, String lastName){
+        for (Employee employee : employees){
+            if (employee.getFirstName().equals(firstName) && employee.getLastName().equals(lastName))
+                employees.remove(employee);
+        }
+    }
+
+    public void sortEmployeeBySalaryDescending(List<Employee> employees) {
+        Collections.sort(employees, Collections.reverseOrder());
+    }
+
+    public void sortEmployeeBySalaryAscending(List<Employee> employees) {
+        Collections.sort(employees);
+    }
+
+}
