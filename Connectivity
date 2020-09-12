@@ -85,5 +85,68 @@ public class Connectivity {
         }
         return data;
     }
+     public List Max_grade() {
+        ArrayList<school> data = filldata();
+        List<school> stud_grades = null;
+        //get grades
+        Map<Integer, List<school>> grade = new LinkedHashMap<Integer, List<school>>();
+        int grades;
+        for (school sc : data) {
+            grades = sc.getGrades();
+            stud_grades = grade.get(grades);
+            if (stud_grades == null) {
+                stud_grades = new ArrayList<school>();
+                grade.put(grades, stud_grades);
+
+            }
+            stud_grades.add(sc);
+        }
+        return stud_grades;
+    }
+
+    public void GetMaxGrade() {
+        ArrayList<school> data = filldata();
+        List<school> list_grade = Max_grade();
+        //Collections.max(data,new school());
+        Map<String, List<school>> items = new LinkedHashMap<String, List<school>>();
+        String name;
+        for (school s : data) {
+            name = s.getClassName();
+            List<school> names = items.get(name);
+            if (names == null) {
+                names = new ArrayList<school>();
+                items.put(name, list_grade);
+
+            }
+            names.add(s);
+
+        }
+        for (Map.Entry<String, List<school>> entry : items.entrySet()) {
+            System.out.println("Category " + entry.getKey() + ":");
+            for (school item : entry.getValue()) {
+                System.out.println("    Grade : " + item);
+            }
+        }
+
+    }
+
+    public void sort_grades_asc() {
+        ArrayList<school> grades = (ArrayList<school>) Max_grade();
+        Collections.sort(grades, new school());
+        
+         for (school s : grades) {
+            System.out.print(s.getGrades() + "\t");
+        }
+        System.out.println();
+    }
+
+    public void sort_grades_desc() {
+        ArrayList<school> grades = (ArrayList<school>) Max_grade();
+        Collections.sort(grades,Collections.reverseOrder());
+        
+        System.out.println(grades+"\t");
+    }
+}
+
 
 }
