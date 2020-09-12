@@ -1,0 +1,10 @@
+
+public class School_DB {
+
+    public static void main(String[] args) {
+        Connectivity db = new Connectivity();
+        db.filldata();
+        db.GetMaxGrade();
+        db.sort_grades_asc();
+        db.sort_grades_desc();
+    }
