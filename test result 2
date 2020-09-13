@@ -1,0 +1,19 @@
+هاي ترتيب desc
+in filldata
+after eq
+school{classId=1, class_Name='java', No_Of_Student=20, stud_ID=1, stud_Name='Saeed', class_ID2=1, age=31, grades=100}	
+school{classId=1, class_Name='java', No_Of_Student=20, stud_ID=2, stud_Name='Kooz', class_ID2=1, age=25, grades=95}	
+school{classId=1, class_Name='java', No_Of_Student=20, stud_ID=3, stud_Name='Maen', class_ID2=1, age=28, grades=85}	
+school{classId=2, class_Name='python', No_Of_Student=15, stud_ID=4, stud_Name='Omar', class_ID2=2, age=27, grades=90}	
+school{classId=2, class_Name='python', No_Of_Student=15, stud_ID=5, stud_Name='Musa', class_ID2=2, age=23, grades=95}	
+school{classId=2, class_Name='python', No_Of_Student=15, stud_ID=6, stud_Name='Odai', class_ID2=2, age=29, grades=80}	
+school{classId=3, class_Name='c++', No_Of_Student=10, stud_ID=7, stud_Name='Mohammad', class_ID2=3, age=21, grades=88}	
+school{classId=3, class_Name='c++', No_Of_Student=10, stud_ID=8, stud_Name='Rami', class_ID2=3, age=35, grades=100}	
+school{classId=3, class_Name='c++', No_Of_Student=10, stud_ID=9, stud_Name='Zaid', class_ID2=3, age=22, grades=83}	
+school{classId=3, class_Name='c++', No_Of_Student=10, stud_ID=10, stud_Name='Amer', class_ID2=3, age=19, grades=75}	
+school{classId=3, class_Name='c++', No_Of_Student=10, stud_ID=11, stud_Name='Jaber', class_ID2=3, age=33, grades=98}	
+
+[school{classId=3, class_Name='c++', No_Of_Student=10, stud_ID=11, stud_Name='Jaber', class_ID2=3, age=33, grades=98}]	
+
+
+Process finished with exit code 0
