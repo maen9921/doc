@@ -1,0 +1,137 @@
+package toleenshapes;
+
+class Shape{
+    
+    protected double area;
+    protected double perimeter;
+    
+    public void print(){
+        
+        System.out.println("  Area: "+area);
+        System.out.println("  Perimeter: "+perimeter);
+    }
+    public void print(String msg){
+        
+        System.out.println("  Message: "+msg);
+    }
+}
+
+class Rectangle extends Shape{
+    
+    private double width;
+    private double hieght;
+    
+    public Rectangle(double width, double hieght){
+        
+        this.width = width;
+        this.hieght = hieght;
+        this.area = this.width * this.hieght;
+        this.perimeter = 2 * (this.width+this.hieght);
+    }
+    
+    @Override
+    public void print(){
+        
+        super.print();
+    }
+    @Override
+    public void print(String msg){
+        
+        super.print(msg);
+    }
+}
+
+class Square extends Shape{
+    
+    private double width;
+    
+    public Square(double width){
+        
+        this.width = width;
+        this.area = this.width * this.width;
+        this.perimeter = this.width * 4;
+    }
+    
+    @Override
+    public void print(){
+        
+        super.print();
+    }
+    @Override
+    public void print(String msg){
+        
+        super.print(msg);
+    }
+}
+
+class Traiangle extends Shape{
+    
+    private double base;
+    private double hieght;
+    private double t1;
+    private double t2;
+    
+    public Traiangle(double base, double hieght, double t1, double t2){
+        
+        this.base = base;
+        this.hieght = hieght;
+        this.t1 = t1;
+        this.t2 = t2;
+        this.area = (this.base/2) * this.hieght;
+        this.perimeter = base + t1 + t2;
+    }
+    
+    @Override
+    public void print(){
+        
+        super.print();
+    }
+    @Override
+    public void print(String msg){
+        
+        super.print(msg);
+    }
+}
+
+class Circle extends Shape{
+    
+    private double raduis;
+    
+    public Circle(double raduis){
+        
+        this.raduis = raduis;
+        this.area = Math.pow(this.raduis, 2) * Math.PI;
+        this.perimeter = (2*this.raduis) * Math.PI;
+    }
+    
+    @Override
+    public void print(){
+        
+        super.print();
+    }
+    @Override
+    public void print(String msg){
+        
+        super.print(msg);
+    }
+}
+
+public class ToleenShapes {
+
+    public static void main(String[] args) {
+        
+        Shape s1 = new Rectangle(10, 50);
+        Shape s2 = new Square(10);
+        Shape s3 = new Traiangle(10, 30, 15, 15);
+        Shape s4 = new Circle(10);
+        
+        System.out.println("Rectangle::");
+          s1.print();
+        System.out.println("Square::");  
+          s2.print();
+        System.out.println("Traiangle::");
+          s3.print();
+        System.out.println("Circle::");
+          s4.print();
+    }
+}
